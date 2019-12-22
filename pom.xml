@@ -31,9 +31,12 @@
                             <goal>test</goal>
                         </goals>
                         <configuration>
+                            <skipTests>true</skipTests>
                             <includes>
-                                <include>/tests/**/*.class</include>
+                                <include>/tests/*.class</include>
                             </includes>
+                            <parallel>classes</parallel>
+                            <threadCount>3</threadCount>
                         </configuration>
                     </execution>
                 </executions>

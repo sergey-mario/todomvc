@@ -1,9 +1,7 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import core.Element;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
@@ -36,7 +34,8 @@ public class MainPage {
     }
 
     public void completeTask() {
-        driver.findElement(checkBoxCircle).click();
+        WebElement toggleTask = driver.findElement(checkBoxCircle);
+        toggleTask.click();
     }
 
     public void deleteTask(String taskName) {
@@ -52,14 +51,14 @@ public class MainPage {
         menuButton.click();
     }
 
-    public void isTaskDisplayedInCurrentFilter(String taskName, boolean state) {
+    public boolean isTaskDisplayedInCurrentFilter(String taskName) {
         WebElement inputTask = driver.findElement(By.xpath(String.format(taskLabelPath, taskName)));
-        Assert.assertEquals(inputTask.isDisplayed(), state, "Task wasn't displayed");
+        return inputTask.isDisplayed();
     }
 
-    public void isTaskDisplayed(String taskName, boolean state) {
+    public boolean isTaskDisplayed(String taskName) {
         List<WebElement> taskList = driver.findElements(By.xpath(String.format(taskLabelPath, taskName)));
-        Assert.assertEquals(taskList.isEmpty(), state, "Task wasn't displayed");
+        return taskList.isEmpty();
     }
 
     public void clearCompletedTask() {
@@ -72,10 +71,9 @@ public class MainPage {
         buttonForToggleAllTask.click();
     }
 
-    public void isCorrectTaskCount(int count) {
+    public String isCorrectTaskCount() {
         WebElement taskCount = driver.findElement(countActiveTask);
-        Assert.assertEquals(taskCount
-                .getText(), String.format("%d item left", count), "Сount is not working correctly");
+        return taskCount.getText();
     }
 
     public void completeTaskByName(String taskName) {

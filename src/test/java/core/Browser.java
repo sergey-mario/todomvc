@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class Browser {
-    public static WebDriver driver;
+    private static WebDriver driver;
 
     WebDriver manageBrowser() throws IOException {
         PropertyFile propertyFile = new PropertyFile("target/classes/test.properties");
@@ -25,7 +25,4 @@ public class Browser {
     void quitFromBrowser() {
         driver.quit();
     }
-
-
-
 }
