@@ -15,7 +15,6 @@ public class UserCreateInvalidTaskTest extends BaseTest {
 
     @Test(description = "User can't create empty task", priority = 1)
     public void cantCreateEmptyTask() {
-        System.out.println("CreateInvalid");
         mainPage = new MainPage(driver);
         mainPage.createTask(NEW_TASK_EMPTY);
         assertTrue(Constants.TASK_DISPLAY_EXCEPTION, mainPage.isTaskDisplayed(NEW_TASK_EMPTY));
@@ -23,7 +22,6 @@ public class UserCreateInvalidTaskTest extends BaseTest {
 
     @Test(description = "User can't create task with space bar", priority = 2)
     public void cantCreateTaskWithSpace() {
-        System.out.println("CreateInvalid");
         mainPage = new MainPage(driver);
         mainPage.createTask(NEW_TASK_SPACE);
         assertTrue(Constants.TASK_DISPLAY_EXCEPTION, mainPage.isTaskDisplayed(NEW_TASK_SPACE));

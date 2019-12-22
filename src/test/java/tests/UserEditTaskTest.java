@@ -14,7 +14,6 @@ public class UserEditTaskTest extends BaseTest {
 
     @Test(description = "User can edit completed task", priority = 1)
     public void correctCompletedTask() {
-        System.out.println("Edit");
         mainPage = new MainPage(driver);
         mainPage.createTask(FIRST_NEW_TASK);
         mainPage.completeTask();
@@ -26,7 +25,6 @@ public class UserEditTaskTest extends BaseTest {
 
     @Test(description = "User can edit new task", priority = 2)
     public void correctNewTask() {
-        System.out.println("Edit");
         mainPage = new MainPage(driver);
         mainPage.createTask(FIRST_NEW_TASK);
         mainPage.callTaskEditorByName(FIRST_NEW_TASK);

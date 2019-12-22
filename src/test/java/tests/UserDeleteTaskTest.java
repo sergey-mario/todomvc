@@ -16,7 +16,6 @@ public class UserDeleteTaskTest extends BaseTest {
 
     @Test(description = "Completed and deleted tasks don't show in All and Active", priority = 1)
     public void completeAndDeleteTaskAndDontShowInAllAndActive() {
-        System.out.println("Delete");
         mainPage = new MainPage(driver);
         mainPage.createTask(FIRST_NEW_TASK);
         mainPage.createTask(SECOND_NEW_TASK);
@@ -30,7 +29,6 @@ public class UserDeleteTaskTest extends BaseTest {
 
     @Test(description = "User can complete and delete task", priority = 2)
     public void createAndDeleteTask() {
-        System.out.println("Delete");
         mainPage = new MainPage(driver);
         mainPage.createTask(NEW_TASK);
         mainPage.completeTask();
@@ -40,7 +38,6 @@ public class UserDeleteTaskTest extends BaseTest {
 
     @Test(description = "User can delete task", priority = 3)
     public void deleteTask() {
-        System.out.println("Delete");
         mainPage = new MainPage(driver);
         mainPage.createTask(NEW_TASK);
         mainPage.deleteTask(NEW_TASK);
@@ -49,7 +46,6 @@ public class UserDeleteTaskTest extends BaseTest {
 
     @Test(description = "Deleted tasks don't show in All", priority = 4)
     public void deleteTaskAndSeeAnotherInAll() {
-        System.out.println("Delete");
         mainPage = new MainPage(driver);
         mainPage.createTask(FIRST_NEW_TASK);
         mainPage.createTask(SECOND_NEW_TASK);

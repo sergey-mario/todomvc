@@ -15,7 +15,6 @@ public class UserCompleteTaskTest extends BaseTest {
 
     @Test(description = "Completed tasks don't show in Active", priority = 1)
     public void completeTaskAndSeeAnotherActiveTask() {
-        System.out.println("Complete");
         mainPage = new MainPage(driver);
         mainPage.createTask(FIRST_NEW_TASK);
         mainPage.createTask(SECOND_NEW_TASK);
@@ -26,7 +25,6 @@ public class UserCompleteTaskTest extends BaseTest {
 
     @Test(description = "User can't see created task in Completed", priority = 2)
     public void completeTaskAndSeeItInCompleted() {
-        System.out.println("Complete");
         mainPage = new MainPage(driver);
         mainPage.createTask(FIRST_NEW_TASK);
         mainPage.createTask(SECOND_NEW_TASK);
@@ -37,7 +35,6 @@ public class UserCompleteTaskTest extends BaseTest {
 
     @Test(description = "User can completed all tasks, see them in Complete and don't show in Active", priority = 3)
     public void completeAllTask() {
-        System.out.println("Complete");
         mainPage = new MainPage(driver);
         mainPage.createTask(FIRST_NEW_TASK);
         mainPage.createTask(SECOND_NEW_TASK);

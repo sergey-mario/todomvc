@@ -18,7 +18,8 @@ public class Browser {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String implicityWaitTimeout = propertyFile.getProperty("defaultTimeout");
+        driver.manage().timeouts().implicitlyWait(Long.parseLong(implicityWaitTimeout), TimeUnit.SECONDS);
         driver.get(mainPageUrl);
         return driver;
     }
