@@ -1,11 +1,8 @@
 package core;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
@@ -22,19 +19,13 @@ public class BaseTest {
 
     @BeforeMethod
     public void setPageToDefaultState() {
-        JavascriptExecutor js = (JavascriptExecutor)driver;
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("localStorage.clear();");
-        driver.get("http://todomvc.com/examples/vanillajs/");
-    }
-
-    @BeforeMethod
-    public void returnToActive() {
-
+        driver.get(browser.mainPageUrl);
     }
 
     @AfterClass
     public void tearDown() {
         browser.quitFromBrowser();
     }
-
 }

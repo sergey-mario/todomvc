@@ -1,9 +1,10 @@
 package pages;
 
-import core.Element;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 
 import java.util.List;
 
@@ -99,7 +100,7 @@ public class MainPage {
     public void setNewTaskName(String newTaskName, String actualTaskName) {
         WebElement editField = driver.findElement(editTaskField);
         editField.click();
-        for (int i = 0; i<=actualTaskName.length(); i++) {
+        for (int i = 0; i <= actualTaskName.length(); i++) {
             editField.sendKeys(Keys.BACK_SPACE);
         }
         editField.sendKeys(newTaskName);

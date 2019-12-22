@@ -27,16 +27,17 @@
                 <version>3.0.0-M3</version>
                 <executions>
                     <execution>
+                        <id>default-test</id>
                         <goals>
                             <goal>test</goal>
                         </goals>
                         <configuration>
-                            <skipTests>true</skipTests>
                             <includes>
                                 <include>/tests/*.class</include>
                             </includes>
                             <parallel>classes</parallel>
-                            <threadCount>3</threadCount>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
                         </configuration>
                     </execution>
                 </executions>

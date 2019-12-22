@@ -2,7 +2,6 @@ package tests;
 
 import core.BaseTest;
 import core.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
@@ -14,55 +13,55 @@ public class UserCreateTaskTest extends BaseTest {
     private static final String FIRST_NEW_TASK = "Ice cream";
     private static final String SECOND_NEW_TASK = "Cake";
     private static final int COUNT = 1;
+
     private MainPage mainPage;
 
-    @Test(description = "User can complete task")
+    @Test(description = "User can complete task", priority = 1)
     public void createAndCompleteTask() {
+        System.out.println("Create");
         mainPage = new MainPage(driver);
         mainPage.createTask(NEW_TASK);
-        //mainPage.selectTaskFilterName(Constants.MENU_NAME_ALL); ///????????????????????????????
         mainPage.completeTask();
         mainPage.selectTaskFilterName(Constants.MENU_NAME_COMPLETED);
-        assertTrue("Task wasn't displayed", mainPage.isTaskDisplayedInCurrentFilter(NEW_TASK));
-
+        assertTrue(Constants.TASK_DISPLAY_EXCEPTION, mainPage.isTaskDisplayedInCurrentFilter(NEW_TASK));
     }
 
-    @Test(description = "User can create task")
+    @Test(description = "User can create task", priority = 2)
     public void createNewTask() {
+        System.out.println("Create");
         mainPage = new MainPage(driver);
         mainPage.createTask(NEW_TASK);
         mainPage.selectTaskFilterName(Constants.MENU_NAME_ALL);
         mainPage.isTaskDisplayedInCurrentFilter(NEW_TASK);
         mainPage.selectTaskFilterName(Constants.MENU_NAME_ACTIVE);
-        assertTrue("Task wasn't displayed", mainPage.isTaskDisplayedInCurrentFilter(NEW_TASK));
-
+        assertTrue(Constants.TASK_DISPLAY_EXCEPTION, mainPage.isTaskDisplayedInCurrentFilter(NEW_TASK));
     }
 
-    @Test(description = "User can create tasks and see count of active tasks on display")
+    @Test(description = "User can create tasks and see count of active tasks on display", priority = 3)
     public void createTaskAndCheckAmount() {
+        System.out.println("Create");
         mainPage = new MainPage(driver);
         mainPage.createTask(FIRST_NEW_TASK);
         mainPage.createTask(SECOND_NEW_TASK);
         mainPage.completeTaskByName(SECOND_NEW_TASK);
-        assertEquals("Сount is not working correctly", mainPage.isCorrectTaskCount(), String.format("%d item left", COUNT));
-
+        assertEquals(Constants.TASK_COUNT_EXCEPTION, mainPage.isCorrectTaskCount(), String.format("%d item left", COUNT));
     }
 
-    @Test(description = "User can't see created task in Completed")
+    @Test(description = "User can't see created task in Completed", priority = 4)
     public void createAndCheckTaskInCompleted() {
+        System.out.println("Create");
         mainPage = new MainPage(driver);
         mainPage.createTask(NEW_TASK);
         mainPage.selectTaskFilterName(Constants.MENU_NAME_COMPLETED);
-        assertTrue("Task wasn't displayed", mainPage.isTaskDisplayed(NEW_TASK));
-
+        assertTrue(Constants.TASK_DISPLAY_EXCEPTION, mainPage.isTaskDisplayed(NEW_TASK));
     }
 
-    @Test(description = "User can create task by clicking in empty place of site")
-    public void createTaskByClick () {
+    @Test(description = "User can create task by clicking in empty place of site", priority = 5)
+    public void createTaskByClick() {
+        System.out.println("Create");
         mainPage = new MainPage(driver);
         mainPage.createTask(NEW_TASK);
         mainPage.clickOnEmptyPlace();
-        assertTrue("Task wasn't displayed", mainPage.isTaskDisplayedInCurrentFilter(NEW_TASK));
-
+        assertTrue(Constants.TASK_DISPLAY_EXCEPTION, mainPage.isTaskDisplayedInCurrentFilter(NEW_TASK));
     }
 }

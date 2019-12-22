@@ -9,10 +9,11 @@ import java.util.concurrent.TimeUnit;
 
 public class Browser {
     private static WebDriver driver;
+    String mainPageUrl;
 
     WebDriver manageBrowser() throws IOException {
-        PropertyFile propertyFile = new PropertyFile("target/classes/test.properties");
-        String mainPageUrl = propertyFile.getProperty("mainPageURL");
+        PropertyFile propertyFile = new PropertyFile("target/test-classes/test.properties");
+        mainPageUrl = propertyFile.getProperty("mainPageURL");
         String chromeDriverPath = new File("chromedriver.exe").getAbsolutePath();
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         driver = new ChromeDriver();
